@@ -10,7 +10,8 @@ class NominsanTest < Minitest::Test
     assert_equal "内蒙古大学", Nominsan.checkip("202.207.7.1")
   end
   
-  def test_mongolian_sort
-    assert_equal ["ᠠ","ᠡ","ᠢ","ᠨᠣᠮ ᠤ","ᠰᠠᠩ"], Nominsan.mongolian_sort("ᠨᠣᠮ ᠤ ᠰᠠᠩ ᠡ ᠢ ᠠ") 
+  def test_checkip_with_no
+    assert_equal "no", Nominsan.checkip("1.1.1.1") 
   end
+  
 end

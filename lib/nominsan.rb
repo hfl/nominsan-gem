@@ -7,6 +7,7 @@ module Nominsan
   def self.checkip(guest_ip)
     guestip = IPAddr.new guest_ip
     file_path = File.join( File.dirname(__FILE__), 'nominsan/source/ips.txt' )
+    isuser = "no"
     File.open(file_path).each_line do |line|
       if line.index("#")
         line = line[0, line.index("#")]
@@ -17,16 +18,13 @@ module Nominsan
       ipa = line.split(";")
       ip_domain = IPAddr.new ipa[0]
       if ip_domain.include? guestip
+        isuser = ipa[1]
         return ipa[1]
         break
       end
     end
-  end
-  
-  #Mongolian sort by letter with standard GB/T 308512-2014
-  def self.mongolian_sort(str)
-    mstr = str
-    mstr.split(/\s+/).sort
-  end
-  
+    if isuser == "no"
+      return isuser
+    end
+  end 
 end
