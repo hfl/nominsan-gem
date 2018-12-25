@@ -7,7 +7,7 @@ class NominsanTest < Minitest::Test
   end
 
   def test_checkip
-    assert_equal "内蒙古大学", Nominsan.checkip("202.207.7.1")
+    assert_equal "内蒙古大学", Nominsan.checkip("202.207.7.57")
   end
   
   def test_checkip_with_no
